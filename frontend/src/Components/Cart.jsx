@@ -14,7 +14,7 @@ function Cart(){
      const CheckOut=async ()=>{
         let userMail=localStorage.getItem("mailid");
         //console.log(userMail+" carrrr ")
-        let response= await fetch("http://localhost:5000/api/orderdata",{
+        let response= await fetch("web-food-delivery-backend.vercel.app/api/orderdata",{
          method:'POST',
          headers:{
           'Content-type':'application/json'

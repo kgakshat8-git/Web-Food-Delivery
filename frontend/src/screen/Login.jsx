@@ -11,7 +11,7 @@ let navigAte=useNavigate();
     const handleSubmit=async (ev)=>{
         //console.log(ev)
         ev.preventDefault();
-        const response=await fetch('http://localhost:5000/api/loginuser',{
+        const response=await fetch('web-food-delivery-backend.vercel.app/api/loginuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
