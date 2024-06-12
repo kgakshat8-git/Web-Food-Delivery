@@ -17,7 +17,7 @@ const cors=require('cors')
 
 app.use(cors(
     {
-        origin:["http://localhost:5173"],
+        origin:["eatindia-akshat-kumar-guptas-projects.vercel.app"],
         methods:["POST","GET"],
         credentials:true
     }
