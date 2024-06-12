@@ -23,12 +23,6 @@ app.use(cors(
     }
 ))
 
-
-
-
-app.get('',(req,res)=>{
-    res.send('Hello Akshat')
-})
 app.get('/funny',(req,res)=>{
     res.send('Hahahaha')
 })
