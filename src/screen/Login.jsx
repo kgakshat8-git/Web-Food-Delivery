@@ -1,8 +1,11 @@
 
 import {useState} from 'react'
 import  {Link, Navigate, useNavigate} from 'react-router-dom'
-
+import Navbar1 from '../Components/Navbar1';
+import {useLoginView, useSetLoginView, usesetsignupview, usesignupview } from '../Components/ContextReducer'
 export default function Login() {
+    const setLoginView=useSetLoginView();
+    const setsignupview=usesetsignupview();
 let navigAte=useNavigate();
   const [creden, setcreden]=useState({email:"",password:""})
     const handleSubmit=async (ev)=>{
@@ -33,6 +36,8 @@ let navigAte=useNavigate();
         }
   return (
     <div>
+        <Navbar1/>
+        <div style={{marginTop:'110px'}}>
         <div className="fs-2 fst-italic text-decoration-underline mt-3" style={{marginLeft:'107px', fontFamily:"Gill Sans",color:'#228B22'}}>LOGIN PAGE</div>
     <div className='d-flex justify-content-center'>
       
@@ -48,11 +53,13 @@ let navigAte=useNavigate();
     <input type="password" className="form-control"  name='password' value={creden.password} onChange={changefunc}/>
   </div>
   <button type="submit" className="m-3 btn btn-success">Login</button>
-  <Link to='/createUser' className="m-3 btn btn-success">Sign Up</Link>
-  <Link to='/' className="m-3 btn btn-success">Back to Home</Link>
+  <Link to='/createUser' className="m-3 btn btn-primary" onClick={()=>{setsignupview(true)
+            setLoginView(false)
+          }} >Sign Up</Link>
   
 </form>
         </div>
+    </div>
     </div>
     </div>
   )

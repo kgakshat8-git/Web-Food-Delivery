@@ -25,14 +25,16 @@ function Cart(){
           order_date:new Date().toDateString(),
          })
         })
-        if(response.status==200)
+        if(response.status==200){
           dispatch({type:'REMOVEALL'})
+          alert('Your Order has been placed')
+        }
         else
         console.log("Gadbad")
      }
     return(
         <div>
-            <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' >
+            <div className='container m-auto table-responsive  table-responsive-sm table-responsive-md' >
             <table className="table table-dark table-hover">
             <thead>
     <tr>    

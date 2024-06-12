@@ -24,10 +24,10 @@ export default function Myorders() {
       <div>
         <Navbar1 />
       </div>
-      <div style={{ marginTop: "86px", padding: "5px" }}>
+      <div style={{ marginTop: "105px", padding: "5px" }}>
         {orders.length ? (
           orders.map((item, index) => (
-            <div className="border rounded-3 border-3 border-primary m-3">
+            <div className="border rounded-3 border-3 border-primary m-3 p-3">
               <div key={index}>
                 {item.map((data) =>
                   data.Order_date ? (

@@ -1,8 +1,13 @@
-import { useContext, useReducer } from "react"
+import { useContext, useReducer, useState } from "react"
 import React, {createContext} from 'react'
  
 const CartStateContext=createContext()
 const CartDispatchContext=createContext()
+const LoginStateContext = createContext();
+const LoginDispatchContext = createContext();
+const SignupStateContext=createContext();
+const SignupSetContext=createContext();
+
 
 const reducer=(state,action)=>{
     switch(action.type){
@@ -24,11 +29,21 @@ const reducer=(state,action)=>{
 }
 export const CartProvider=({children})=>{
    const [state,dispatch]=useReducer(reducer,[])
+   const [loginView, setLoginView] = useState(false);
+   const [signupview, setsignupview]=useState(false);
 
    return(
     <CartDispatchContext.Provider value={dispatch}>
         <CartStateContext.Provider value={state}>
+        <LoginDispatchContext.Provider value={setLoginView}>
+        <LoginStateContext.Provider value={loginView}>
+        <SignupStateContext.Provider value={signupview}>
+            <SignupSetContext.Provider value={setsignupview}>
             {children}
+            </SignupSetContext.Provider>
+            </SignupStateContext.Provider>
+        </LoginStateContext.Provider>
+        </LoginDispatchContext.Provider>
         </CartStateContext.Provider>
     </CartDispatchContext.Provider>
    )
@@ -38,3 +53,7 @@ export const CartProvider=({children})=>{
 
 export const useCart=()=> useContext(CartStateContext);
 export const useDispatchCart=()=> useContext(CartDispatchContext);
+export const useLoginView = () => useContext(LoginStateContext);
+export const useSetLoginView = () => useContext(LoginDispatchContext);
+export const usesignupview=()=> useContext(SignupStateContext);
+export const usesetsignupview=()=>useContext(SignupSetContext);

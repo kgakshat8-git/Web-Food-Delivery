@@ -1,9 +1,15 @@
 import {Link} from 'react-router-dom'
 import {useState} from 'react'
+import {useLoginView, useSetLoginView, usesetsignupview, usesignupview } from '../Components/ContextReducer'
+import Navbar1 from '../Components/Navbar1';
+
 function Signup() {
   //the name attribute is set same as creden key values  because it helps us to access the creden values when some change occurs 
   //The fetch function returns a Response object that represents the response to the request.
   //The Response object provides several methods to access the response body in different formats, such as .text(), .blob(), .arrayBuffer(), and .json().
+  const loginView=useLoginView();
+    const setLoginView=useSetLoginView();
+    const setsignupview=usesetsignupview();
     const [creden, setcreden]=useState({name:"",email:"",password:"",glocation:""})
     const handleSubmit=async (ev)=>{
         //console.log(ev)
@@ -28,6 +34,8 @@ function Signup() {
         }
     return (                
         <div>
+            <Navbar1/>
+            <div style={{marginTop:'110px'}}>
             <div className="fs-2 fst-italic text-decoration-underline mt-3" style={{marginLeft:'107px', fontFamily:"Gill Sans",color:'#228B22'}}>SIGN UP PAGE</div>
       <div className='d-flex justify-content-center'>
         <div className="form-group container m-4 border border-3 border-success" style={{backgroundColor:'silver', padding:'30px'}}>
@@ -50,9 +58,12 @@ function Signup() {
     <input type="text" id='exampleInputglocation' className="form-control" placeholder="Location" name='glocation' value={creden.glocation} onChange={changefunc}/> 
   </div>
   
-  <button type="submit" className="btn btn-primary">Submit</button>
-  <Link to='/login' className='btn btn-success m-2'> Already a User </Link>
+  <button type="submit" className="btn btn-success">Submit</button>
+  <Link to='/login' className='btn btn-primary m-2' onClick={()=>{setLoginView(true)
+    setsignupview(false)
+  }}> Already a User </Link>
 </form>
+        </div>
         </div>
         </div>
         </div>
