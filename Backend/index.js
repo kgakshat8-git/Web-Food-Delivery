@@ -6,14 +6,14 @@ const abc=require("./Routes/Createuser")
 //const cors=require('cors')
 //console.log(app);
 
-app.use((req,res,next)=>{
-   res.setHeader("Access-Control-Allow-Origin","eatindia-akshat-kumar-guptas-projects.vercel.app")
-   res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-   );
-   next();
-})
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 // app.use(cors(
 //     {
@@ -31,4 +31,7 @@ app.use('/api',abc)
 app.use('/api',require('./Routes/Displaydata')); 
 app.use('/api',require('./Routes/OrderData'))
 
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
