@@ -10,5 +10,4 @@ router.post('/foodData', (req,res)=>{
         res.send("Error encountered")
      }
 })
-
 module.exports=router;

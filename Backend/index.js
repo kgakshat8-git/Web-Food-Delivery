@@ -8,14 +8,14 @@ const cors=require('cors')
 
 app.use(cors(
     {
-        origin:["https://frontend-zeta-flax-61.vercel.app"],
+        origin:["https://justeatind-akshat-kumar-guptas-projects.vercel.app"],
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         allowedHeaders: 'Content-Type,Authorization', 
         credentials:true
     }
 ))
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://frontend-zeta-flax-61.vercel.app"); // Allow requests from any origin
+    res.setHeader("Access-Control-Allow-Origin", "https://justeatind-akshat-kumar-guptas-projects.vercel.app"); // Allow requests from any origin
     res.header(
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, PATCH, DELETE"
