@@ -9,7 +9,8 @@ const cors=require('cors')
 app.use(cors(
     {
         origin:["https://frontend-zeta-flax-61.vercel.app"],
-        methods:["POST","GET"],
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        allowedHeaders: 'Content-Type,Authorization', 
         credentials:true
     }
 ))
