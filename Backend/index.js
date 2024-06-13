@@ -3,11 +3,18 @@ const app=express()
 const mongoodb=require('./db')
 mongoodb()
 const abc=require("./Routes/Createuser")
-//const cors=require('cors')
+const cors=require('cors')
 //console.log(app);
 
+app.use(cors(
+    {
+        origin:["https://eatindia-akshat-kumar-guptas-projects.vercel.app"],
+        methods:["POST","GET"],
+        credentials:true
+    }
+))
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+    res.setHeader("Access-Control-Allow-Origin", "https://eatindia-akshat-kumar-guptas-projects.vercel.app"); // Allow requests from any origin
     res.header(
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -19,13 +26,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use(cors(
-//     {
-//         origin:["eatindia-akshat-kumar-guptas-projects.vercel.app"],
-//         methods:["POST","GET"],
-//         credentials:true
-//     }
-// ))
+
 
 app.get('/funny',(req,res)=>{
     res.send('Hahahaha')
