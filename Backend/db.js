@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const mongoDbUri =
-  "mongodb+srv://goFoodAkg:goFood24@cluster0.xpl9p9x.mongodb.net/goFoodMern?retryWrites=true&w=majority&appName=Cluster0";
+require('dotenv').config()
+const mongoDbUri =process.env.MONGO_URL
 const mongoodb = () => {
    mongoose.connect(mongoDbUri,async () => {
     console.log("Connection Success");
