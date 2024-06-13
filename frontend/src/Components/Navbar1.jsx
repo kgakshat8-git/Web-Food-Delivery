@@ -34,7 +34,7 @@ function Navbar1() {
         top:'50%',
         transform: 'translateY(-50%)'}}/></Link>
         <div className="navbar-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-              <div className="eat-india" style={{ fontSize: '45px', color: '#fff', fontFamily: 'Algerian, serif' }}>Eat India</div>
+              <div className="eat-india" style={{ fontSize: '45px', color: 'greenyellow', fontFamily: 'Algerian, serif' }}>Eat India</div>
             </div>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>

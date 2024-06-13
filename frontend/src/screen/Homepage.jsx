@@ -9,7 +9,7 @@ function Homepage() {
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
-        const response = await fetch('web-food-delivery-backend.vercel.app/api/foodData', {
+        const response = await fetch('https://web-food-delivery-backend.vercel.app/api/foodData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

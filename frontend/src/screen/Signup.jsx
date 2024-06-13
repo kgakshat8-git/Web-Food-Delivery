@@ -14,7 +14,7 @@ function Signup() {
     const handleSubmit=async (ev)=>{
         //console.log(ev)
         ev.preventDefault();
-        const response=await fetch('web-food-delivery-backend.vercel.app/api/createuser',{
+        const response=await fetch('https://web-food-delivery-backend.vercel.app/api/createuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
