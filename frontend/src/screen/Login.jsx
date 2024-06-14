@@ -1,6 +1,6 @@
 
 import {useState} from 'react'
-import  {Link, Navigate, useNavigate} from 'react-router-dom'
+import  {Link, useNavigate} from 'react-router-dom'
 import Navbar1 from '../Components/Navbar1';
 import {useLoginView, useSetLoginView, usesetsignupview, usesignupview } from '../Components/ContextReducer'
 export default function Login() {
@@ -50,10 +50,10 @@ let navigAte=useNavigate();
   </div>
   <div className="form-group">
     <label htmlFor="exampleInputPassword1">Password</label>
-    <input type="password" className="form-control"  name='password' value={creden.password} onChange={changefunc}/>
+    <input type="password" placeholder="Enter your password" className="form-control"  name='password' value={creden.password} onChange={changefunc}/>
   </div>
-  <button type="submit" className="m-3 btn btn-success">Login</button>
-  <Link to='/createUser' className="m-3 btn btn-primary" onClick={()=>{setsignupview(true)
+  <button type="submit" className="mt-3 btn btn-success">Login</button>
+  <Link to='/createUser' className="mt-3 mx-3 btn btn-primary" onClick={()=>{setsignupview(true)
             setLoginView(false)
           }} >Sign Up</Link>
   

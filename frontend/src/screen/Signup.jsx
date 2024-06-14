@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import {useLoginView, useSetLoginView, usesetsignupview, usesignupview } from '../Components/ContextReducer'
 import Navbar1 from '../Components/Navbar1';
@@ -7,6 +7,7 @@ function Signup() {
   //the name attribute is set same as creden key values  because it helps us to access the creden values when some change occurs 
   //The fetch function returns a Response object that represents the response to the request.
   //The Response object provides several methods to access the response body in different formats, such as .text(), .blob(), .arrayBuffer(), and .json().
+  const navigate=useNavigate();
   const loginView=useLoginView();
     const setLoginView=useSetLoginView();
     const setsignupview=usesetsignupview();
@@ -25,6 +26,12 @@ function Signup() {
     //console.log(json)
     if(!json.success){
         alert('Enter Valid Credentials')
+    }
+    else
+    {
+        setsignupview(false)
+        alert('You have successfully signed up! Please Login to continue');
+        navigate("/")
     }
 }
     const changefunc=(event)=>
@@ -51,15 +58,15 @@ function Signup() {
   </div>
   <div className="form-group">
     <label htmlFor="exampleInputPassword1">Password</label>
-    <input type="password" className="form-control" id='exampleInputPassword1' name='password' value={creden.password} onChange={changefunc}/>
+    <input type="password" placeholder="Enter your password" className="form-control" id='exampleInputPassword1' name='password' value={creden.password} onChange={changefunc}/>
   </div>
   <div className="form-group">
     <label htmlFor="exampleInputglocation">Location</label>
     <input type="text" id='exampleInputglocation' className="form-control" placeholder="Location" name='glocation' value={creden.glocation} onChange={changefunc}/> 
   </div>
   
-  <button type="submit" className="btn btn-success">Submit</button>
-  <Link to='/login' className='btn btn-primary m-2' onClick={()=>{setLoginView(true)
+  <button type="submit" className="btn btn-success mt-3">Submit</button>
+  <Link to='/login' className='btn btn-primary mx-3 mt-3' onClick={()=>{setLoginView(true)
     setsignupview(false)
   }}> Already a User </Link>
 </form>
