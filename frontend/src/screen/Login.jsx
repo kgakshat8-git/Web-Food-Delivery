@@ -12,7 +12,7 @@ let navigAte=useNavigate();
 
 const handleLoginSuccess = async (response) => {
     const tokenId = response.credential;
-    const res = await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/auth/google', {
+    const res = await fetch('https://backendfood-mt6q.onrender.com/api/auth/google', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const handleLoginSuccess = async (response) => {
     const handleSubmit=async (ev)=>{
         //console.log(ev)
         ev.preventDefault();
-        const response=await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/loginuser',{
+        const response=await fetch('https://backendfood-mt6q.onrender.com/api/loginuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

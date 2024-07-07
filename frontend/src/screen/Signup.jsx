@@ -14,7 +14,7 @@ function Signup() {
 
   const handleLoginSuccess = async (response) => {
     const tokenId = response.credential;
-    const res = await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/auth/google', {
+    const res = await fetch('https://backendfood-mt6q.onrender.com/api/auth/google', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function Signup() {
             setcreden({...creden, confirmpass:""});
             return;
           }
-        const response=await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/createuser',{
+        const response=await fetch('https://backendfood-mt6q.onrender.com/api/createuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

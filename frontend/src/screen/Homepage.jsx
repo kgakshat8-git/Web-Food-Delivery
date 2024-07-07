@@ -39,7 +39,7 @@ function Homepage() {
 
     const [imageid, setimageid]= useState(food2);
     const loadData = async () => {
-        const response = await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/foodData', {
+        const response = await fetch('https://backendfood-mt6q.onrender.com/api/foodData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
