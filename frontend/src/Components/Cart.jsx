@@ -18,7 +18,7 @@ function Cart(){
         let userMail=localStorage.getItem("mailid");
         //console.log(userMail+" carrrr ")
 
-        const respon = await fetch('https://backendfood-mt6q.onrender.com/api/payment',{
+        const respon = await fetch('/api/payment',{
             method:'POST',
         headers:{
             'Content-Type':'application/json'

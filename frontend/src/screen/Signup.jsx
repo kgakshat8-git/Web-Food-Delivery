@@ -51,7 +51,7 @@ function Signup() {
             setcreden({...creden, confirmpass:""});
             return;
           }
-        const response=await fetch('https://backendfood-mt6q.onrender.com/api/createuser',{
+        const response=await fetch('/api/createuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

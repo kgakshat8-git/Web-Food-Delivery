@@ -45,7 +45,7 @@ const handleLoginSuccess = async (response) => {
     const handleSubmit=async (ev)=>{
         //console.log(ev)
         ev.preventDefault();
-        const response=await fetch('https://backendfood-mt6q.onrender.com/api/loginuser',{
+        const response=await fetch('/loginuser',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

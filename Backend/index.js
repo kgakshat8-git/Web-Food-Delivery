@@ -8,7 +8,6 @@ const { OAuth2Client } = require('google-auth-library'); // being used for g-ver
 require('dotenv').config();
 const User=require('./models/User');
 const jwt=require("jsonwebtoken")
-const stripe =require('stripe') (process.env.STRIPE_KEY) //used for payment
 
 const jwtSecret="Hello its my first Mern Stack Project" 
 
@@ -17,6 +16,10 @@ const client = new OAuth2Client(CLIENT_ID);
 console.log(client)
 
 app.use(cors());
+app.options('*', cors());
+
+const stripe =require('stripe') (process.env.STRIPE_KEY) //used for payment
+
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); // * Allows requests from any origin
     res.header(
@@ -90,12 +93,19 @@ app.post('/api/auth/google', async (req, res) => {
             }     
     } catch (error) {
         console.log('Google Sign-In Error:', error);
-        res.status(401).json({ success: 'nhi', message: 'Invalid token' });
+        res.status(401).json({ success: 'nhi', message: 'Invalid token hai' });
     }
 });
 
 
+
+
+
+
+
+
 app.post('/api/payment', async(req,res)=>{
+
     const product = await stripe.products.create({
         name:"Paying to EatIndia"
     })
