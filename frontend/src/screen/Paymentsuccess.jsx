@@ -9,7 +9,7 @@ const Paymentsuccess = () => {
         console.log("hipayment1baar");
         const usermail=localStorage.getItem("mailid");
         const username=localStorage.getItem("username");
-        const res = await fetch('https://backendfood-mt6q.onrender.com/api/mailing',{
+        const res = await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/mailing',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

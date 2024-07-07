@@ -18,7 +18,7 @@ function Cart(){
         let userMail=localStorage.getItem("mailid");
         //console.log(userMail+" carrrr ")
 
-        const respon = await fetch('/api/payment',{
+        const respon = await fetch('https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/payment',{
             method:'POST',
         headers:{
             'Content-Type':'application/json'
@@ -30,7 +30,7 @@ function Cart(){
         window.location.href=resp.url
         
 
-        let response= await fetch("https://backendfood-mt6q.onrender.com/api/orderdata",{
+        let response= await fetch("https://web-food-delivery-backend-akshat-kumar-guptas-projects.vercel.app/api/orderdata",{
          method:'POST',
          headers:{
           'Content-type':'application/json'
