@@ -1,6 +1,8 @@
 //import { checkout } from '../../Backend/Routes/Createuser';
 import {useCart, useDispatchCart} from './ContextReducer'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from 'react-router-dom';
+//import 'bootstrap-icons/font/bootstrap-icons.css';
+import {FaTrash} from 'react-icons/fa6'
 function Cart(){
     let State=useCart();
     let dispatch=useDispatchCart();
@@ -10,10 +12,24 @@ function Cart(){
        await dispatch({type:"DELETE",position:index})
      }
      if(State.length==0)
-        return (<div className='text-success fs-3' style={{textAlign:"center"}}>Your Cart is Empty! Go grab some Food</div>)
-     const CheckOut=async ()=>{
+        return (<div className='text-lime-500 text-3xl' style={{textAlign:"center"}}>Your Cart is empty! Go grab some Food</div>)
+     const CheckOut=async (e)=>{
+        e.preventDefault()
         let userMail=localStorage.getItem("mailid");
         //console.log(userMail+" carrrr ")
+
+        const respon = await fetch('https://backendfood-mt6q.onrender.com/api/payment',{
+            method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({totalamt:totalCost, mailid:userMail})
+        })
+        const resp=await respon.json()
+        console.log(resp);
+        window.location.href=resp.url
+        
+
         let response= await fetch("https://backendfood-mt6q.onrender.com/api/orderdata",{
          method:'POST',
          headers:{
@@ -27,23 +43,24 @@ function Cart(){
         })
         if(response.status==200){
           dispatch({type:'REMOVEALL'})
-          alert('Your Order has been placed')
+          
         }
         else
         console.log("Gadbad")
      }
     return(
         <div>
-            <div className='container m-auto table-responsive  table-responsive-sm table-responsive-md' >
-            <table className="table table-dark table-hover">
+            <div className='container m-auto ' >
+            <table className="table">
             <thead>
-    <tr>    
-      <th scope="col" className="text-warning">#</th>
-      <th scope="col" className="text-warning">Name</th>
-      <th scope="col" className="text-warning">Size</th>
-      <th scope="col" className="text-warning">Quantity</th>
-      <th scope="col" className="text-warning">Price</th>
-      <th></th>
+        
+        <tr>
+              <th scope="col" className="px-[75px] py-3 text-start  font-medium text-white uppercase ">#</th>
+              <th scope="col" className="px-[75px] py-3 text-start  font-medium text-white uppercase ">Item</th>
+              <th scope="col" className="px-[75px] py-3 text-start  font-medium text-white uppercase ">Size</th>
+              <th scope="col" className="px-[75px] py-3 text-start  font-medium text-white uppercase ">Quantity</th>
+              <th scope="col" className="px-[75px] py-3 text-start  font-medium text-white uppercase ">Price</th>
+              
     </tr>
   </thead>
   <tbody>
@@ -52,20 +69,24 @@ function Cart(){
         totalCost=totalCost+parseInt(item.price)
     return(
     <tr>
-        <td>{index+1}</td>
-        <td>{item.name}</td>
-        <td>{item.size}</td>
-        <td>{item.qty}</td>
-        <td>{item.price}</td>
-        <td><div className='btn bg-danger' onClick={()=>delete1(index)}><i className="bi bi-trash3 "></i></div></td>
+        <td scope="col" className='px-[75px] py-3 text-start  font-xs text-blue-500'>{index+1}</td>
+        <td scope="col" className='px-[75px] py-3 text-start whitespace-nowrap font-xs text-blue-500'>{item.name}</td>
+        <td scope="col" className='px-[75px] py-3 text-start  font-xs text-blue-500'>{item.size}</td>
+        <td scope="col" className='px-[105px] py-3 text-start  font-xs text-blue-500'>{item.qty}</td>
+        <td scope="col" className='px-[75px] py-3 text-start  font-xs text-blue-500'>{item.price}</td>
+        <td scope="col" className='px-[75px] py-3 text-start  font-xs text-blue-500'>
+        <div className='text-red-500 cursor-pointer' onClick={()=>delete1(index)}><FaTrash/></div></td>
      </tr>
     )})}
   </tbody>
             </table>
             </div>
 
-            <div className='text-success fs-4 mx-5'> Total Price = ₹ {totalCost}</div>
-            <div className='btn btn-warning mx-5 mt-2' onClick={CheckOut}>Check Out</div>
+            <div className='inline-block py-4 px-4 mx-24 mt-6 font-semibold'>
+            <div className='flex  items-center gap-2 w-[180px] justify-center bg-gradient-to-r from-primary to-secondary text-white -mt-1 px-2 py-1 rounded-full duration-150 cursor-default'>Total Price = ₹ {totalCost}</div> </div>
+            <br/>
+            <div className='inline-block py-4 px-4 mx-24 font-semibold hover:text-primary cursor-pointer active:text-yellow-200'>
+            <button className='flex  items-center gap-2 w-[120px] justify-center bg-gradient-to-r from-primary to-secondary text-white -mt-1 px-2 py-1 rounded-full hover:scale-110 duration-150  active:text-yellow-200' onClick={CheckOut} >Check Out</button> </div>
         </div>
     )
 }

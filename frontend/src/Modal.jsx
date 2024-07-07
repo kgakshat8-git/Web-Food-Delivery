@@ -30,7 +30,7 @@ export default function Modal({ children, onClose }) {
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
-        <button className='btn bg-danger fs-5' style={{ marginLeft: "90%", marginTop: "-105px" }} onClick={onClose}> X </button>
+        <button className='bg-red-700 font-xl w-8 h-9 rounded-md font-semibold -mt-52 -translate-y-16' style={{ marginLeft: "95%" }} onClick={onClose}> X </button>
         {children}
       </div>
     </>,
