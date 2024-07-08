@@ -17,7 +17,7 @@ export default function About() {
         <Navbar1/>
       <div className="dark:bg-gray-950 pt-16">
         <div style ={bgImage} className="min-h-[550px] sm:min-h-[600px] bg-gray-100 dark:bg-gray-950 dark:text-white duration-200 justify-center ml-5 ">
-            <h1 className="text-4xl font-cursive font-semibold mx-auto ml-[650px] mb-4"> About Project </h1>
+            <h1 className="text-4xl font-cursive font-semibold mx-auto ml-[650px] mb-4 pt-6"> About Project </h1>
             <div className="">  
             <span className="font-semibold underline text-2xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', padding: '0 5px' }}>FOOD DELIVERY WEBSITE (MERN Full Stack Project)</span><br/> <br/>
             <span className="font-semibold underline text-xl">Technologies Used: </span><br/>
@@ -44,6 +44,7 @@ Developed functionalities for adding items to the cart, checking out, and viewin
 Utilized Tailwind CSS for styling and ensuring a consistent design.<br/>
 Implemented a dark mode feature for user interface customization.<br/>
 Added animations on scroll to enhance user engagement.<br/>
+Integrated comprehensive user authentication using Google OAuth, implemented secure and efficient payment processing<br/> through Stripe, and utilized Nodemailer for automated email notifications and communication within a web application, ensuring a seamless <br/> user experience.<br/>
  <br/></div>
             </div>
             </div>

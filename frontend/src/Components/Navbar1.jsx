@@ -1,7 +1,7 @@
 import {Link, useNavigate} from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge'
 //import 'bootstrap-icons/font/bootstrap-icons.css';
-import {useCart} from './ContextReducer'
+import {useCart,useDispatchCart} from './ContextReducer'
 import Cart from './Cart'
 import { useState } from 'react';
 import Modal from "../Modal"
@@ -15,6 +15,8 @@ import Login from '../screen/Login'
 //import { accountButton } from 'react-bootstrap';
 
 function Navbar1() {
+
+    let dispatch=useDispatchCart();
   const loginView=useLoginView();
   const setLoginView=useSetLoginView();
   const signupview=usesignupview();
@@ -23,7 +25,9 @@ function Navbar1() {
   const [account,setaccount]=useState(false)
   const navi=useNavigate()
   const Logoutfunc=()=>{
+   // dispatch({type:'REMOVE ALL'})
     localStorage.removeItem("authtoken")
+    
     setLoginView(false)
     setsignupview(false)
     setaccount(false)

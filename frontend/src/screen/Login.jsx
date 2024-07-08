@@ -71,8 +71,6 @@ const handleLoginSuccess = async (response) => {
             setcreden({...creden, [event.target.name]:event.target.value})
         }
 
-
-
 return(
     <>
     {loginpop&& (

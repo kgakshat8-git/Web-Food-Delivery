@@ -23,7 +23,7 @@ function Cart(){
         headers:{
             'Content-Type':'application/json'
         },
-        body:JSON.stringify({totalamt:totalCost, mailid:userMail})
+        body: JSON.stringify({totalamt:totalCost, mailid:userMail})
         })
         const resp=await respon.json()
         console.log(resp);
@@ -43,7 +43,6 @@ function Cart(){
         })
         if(response.status==200){
           dispatch({type:'REMOVEALL'})
-          
         }
         else
         console.log("Gadbad")
